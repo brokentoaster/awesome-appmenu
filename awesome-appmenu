@@ -35,7 +35,7 @@ class Launcher():
                  "%k", "%v", "%m"]
 
   def __init__(self, launcherfile, use_icon=True, 
-               icon_search_paths=["/usr/share/icons/hicolor"], verbose=False):
+               icon_search_paths=["/usr/local/share/icons/hicolor"], verbose=False):
     self.Name = None
     self.FileName = None
     self.FilePath = None
@@ -198,7 +198,7 @@ class Launcher():
 class Category():
 
   def __init__(self, listed_name, name, use_icon=True, icon_generic_name=None,
-               icon_search_paths=["/usr/share/icons/hicolor"], verbose=False):
+               icon_search_paths=["/usr/local/share/icons/hicolor"], verbose=False):
     self.ListedName = listed_name
     self.Name = name
     self.UseIcon = use_icon
@@ -265,7 +265,7 @@ class Category():
     # http://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/
     templaunchers = copy(self.Launchers)
     self.Launchers = []
-    for key, value in sorted(launcherdict.items(), key=lambda item: (item[1], item[0]):
+    for key, value in sorted(launcherdict.items(), key=lambda item: (item[1], item[0])):
       for launcher in templaunchers:
         if launcher.FileName == key: 
           self.Launchers.append(launcher)
@@ -293,7 +293,7 @@ class Menu():
 
   # Finds launchers and adds them to appropriate categories
   def getLaunchers(self, launcherpaths, use_icon=True, icon_search_paths=
-                   ["/usr/share/icons/hicolor"], ignore_OnlyShowIn=False):
+                   ["/usr/local/share/icons/hicolor"], ignore_OnlyShowIn=False):
 
     # See if there's a Miscellaneous category or create it if needed
     for i in range(self.NumCategories):
@@ -465,9 +465,9 @@ def load_config():
 
   # Set defaults
   home = os.environ["HOME"]
-  launcherpaths = ["/usr/share/applications", 
+  launcherpaths = ["/usr/local/shareapplications", 
                    home + "/.local/share/applications"]
-  iconpaths = ["/usr/share/icons/hicolor"]
+  iconpaths = ["/usr/local/share/icons/hicolor"]
   categories = [ ["Utility",   "Accessories", "applications-utilities"],
                ["Development", "Development", "applications-development"],
                ["Education",   "Education",   "applications-science"],
